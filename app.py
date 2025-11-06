@@ -32,7 +32,12 @@ st.sidebar.markdown("---")
 st.sidebar.warning("I spend a long time developing and optimizing this project to make it useful for everyone. If it helped you or saved your time, consider buying me a coffee via UPI - scan the QR code below. Thanks for your support! ❤")
 st.sidebar.image("qr.jpeg", use_container_width=True)
 
+#---------------------------------------------------------
 
+st.header("Visualize Attention like Never Before")
+st.success("The attention mechanism in Transformers allows the model to focus on the most relevant parts of an input sequence when generating an output. Instead of processing words sequentially like RNNs, Transformers use self-attention to compute relationships between all words in a sentence in parallel.
+
+In self-attention, each word is represented by three vectors — Query (Q), Key (K), and Value (V). The attention score between two words is calculated using the dot product of their Query and Key vectors, followed by a softmax operation to obtain normalized weights. These weights determine how much attention each word should give to others. The final output for each word is a weighted sum of the Value vectors.")
 # -------------------------------
 
 text = st.text_input("Enter the text: ", "Example: The cat sats on the mat")
@@ -438,6 +443,7 @@ if text:
     sns.heatmap(similarity_df, cmap=cmaps_sim, annot=False, ax=ax_sim)
     ax_sim.set_title("Cosine Similarity (Q vs K)")
     st.pyplot(fig_sim)
+
 
 
 
