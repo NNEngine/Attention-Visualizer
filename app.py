@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import networkx as nx
 import plotly.graph_objects as go
 
-st.page_config(
+st.app_config(
     page_title = "Attention Visualizer",
 )
 
@@ -434,6 +434,7 @@ if text:
     sns.heatmap(similarity_df, cmap=cmaps_sim, annot=False, ax=ax_sim)
     ax_sim.set_title("Cosine Similarity (Q vs K)")
     st.pyplot(fig_sim)
+
 
 
 
