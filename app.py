@@ -345,7 +345,7 @@ if text:
         textposition="bottom center",
         marker=dict(
             # Explicitly convert everything to native Python types
-            showscale=True,
+            showscale=False,
             colorscale='YlGnBu',
             reversescale=True,
             color=[float(attention_weight.loc[focus_token, node])
@@ -432,6 +432,7 @@ if text:
     sns.heatmap(similarity_df, cmap=cmaps_sim, annot=False, ax=ax_sim)
     ax_sim.set_title("Cosine Similarity (Q vs K)")
     st.pyplot(fig_sim)
+
 
 
 
