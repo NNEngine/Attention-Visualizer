@@ -28,7 +28,7 @@ st.sidebar.write(
 st.sidebar.warning("All the Parameters are generated from Normal Distribution. No model training or learned weights are used. It is for Visualising Purpose Only.")
 st.sidebar.markdown("---")
 st.sidebar.caption("👨‍💻 Built by Shivam Sharma")
-st.sidebar.image("attentionImage.webp", use_container_width=True)
+st.sidebar.image("qr.jpeg", use_container_width=True)
 
 
 # -------------------------------
@@ -436,6 +436,7 @@ if text:
     sns.heatmap(similarity_df, cmap=cmaps_sim, annot=False, ax=ax_sim)
     ax_sim.set_title("Cosine Similarity (Q vs K)")
     st.pyplot(fig_sim)
+
 
 
 
