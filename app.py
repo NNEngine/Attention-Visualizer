@@ -7,6 +7,10 @@ import matplotlib.pyplot as plt
 import networkx as nx
 import plotly.graph_objects as go
 
+st.page_config(
+    page_title = "Attention Visualizer",
+)
+
 st.sidebar.image("attentionImage.webp", use_container_width=True)
 st.sidebar.title("🔍 Attention Visualizer")
 st.sidebar.write(
@@ -430,6 +434,7 @@ if text:
     sns.heatmap(similarity_df, cmap=cmaps_sim, annot=False, ax=ax_sim)
     ax_sim.set_title("Cosine Similarity (Q vs K)")
     st.pyplot(fig_sim)
+
 
 
 
