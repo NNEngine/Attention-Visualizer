@@ -314,26 +314,49 @@ if text:
         node_y.append(y)
         node_text.append(node)
 
+    # node_trace = go.Scatter(
+    #     x=node_x, y=node_y,
+    #     mode='markers+text',
+    #     hoverinfo='text',
+    #     text=node_text,
+    #     textposition="bottom center",
+    #     marker=dict(
+    #         showscale=True,
+    #         colorscale='YlGnBu',
+    #         color=[attention_weight.loc[focus_token, node] if node != focus_token else 1.0 for node in G.nodes()],
+    #         size=[30 if node == focus_token else 18 for node in G.nodes()],
+    #         colorbar=dict(
+    #             title="Attention Weight",
+    #             thickness=15,
+    #             xanchor='left',
+    #             titleside='right'
+    #         ),
+    #         line=dict(width=2, color='white')
+    #     )
+    # )
+
     node_trace = go.Scatter(
-        x=node_x, y=node_y,
-        mode='markers+text',
-        hoverinfo='text',
-        text=node_text,
-        textposition="bottom center",
-        marker=dict(
-            showscale=True,
-            colorscale='YlGnBu',
-            color=[attention_weight.loc[focus_token, node] if node != focus_token else 1.0 for node in G.nodes()],
-            size=[30 if node == focus_token else 18 for node in G.nodes()],
-            colorbar=dict(
-                title="Attention Weight",
-                thickness=15,
-                xanchor='left',
-                titleside='right'
-            ),
-            line=dict(width=2, color='white')
-        )
+    x=node_x, y=node_y,
+    mode='markers+text',
+    hoverinfo='text',
+    text=node_text,
+    textposition="bottom center",
+    marker=dict(
+        showscale=True,
+        colorscale='YlGnBu',
+        color=[float(attention_weight.loc[focus_token, node]) if node != focus_token else 1.0 
+               for node in G.nodes()],
+        size=[30 if node == focus_token else 18 for node in G.nodes()],
+        colorbar=dict(
+            title="Attention Weight",
+            thickness=15,
+            xanchor='left',
+            titleside='right'
+        ),
+        line=dict(width=2, color='white')
     )
+)
+
 
     # Combine everything
     fig3 = go.Figure(data=[edge_trace, node_trace],
@@ -400,3 +423,4 @@ if text:
     sns.heatmap(similarity_df, cmap=cmaps_sim, annot=False, ax=ax_sim)
     ax_sim.set_title("Cosine Similarity (Q vs K)")
     st.pyplot(fig_sim)
+
