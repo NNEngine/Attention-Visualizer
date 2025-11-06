@@ -29,7 +29,7 @@ st.sidebar.warning("All the Parameters are generated from Normal Distribution. N
 st.sidebar.markdown("---")
 st.sidebar.caption("👨‍💻 Built by Shivam Sharma")
 st.sidebar.markdown("---")
-st.sidebar.warning("I spend a long time developing and optimizing this project to make it useful for everyone. If it helped you or saved your time, consider buying me a coffee via UPI - scan the QR code below.Thanks for your support! ❤")
+st.sidebar.warning("I spend a long time developing and optimizing this project to make it useful for everyone. If it helped you or saved your time, consider buying me a coffee via UPI - scan the QR code below. Thanks for your support! ❤")
 st.sidebar.image("qr.jpeg", use_container_width=True)
 
 
@@ -438,6 +438,7 @@ if text:
     sns.heatmap(similarity_df, cmap=cmaps_sim, annot=False, ax=ax_sim)
     ax_sim.set_title("Cosine Similarity (Q vs K)")
     st.pyplot(fig_sim)
+
 
 
 
