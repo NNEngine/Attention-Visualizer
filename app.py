@@ -335,7 +335,6 @@ if text:
     #     )
     # )
 
-    # Safe, explicit Plotly node trace
     node_trace = go.Scatter(
         x=node_x,
         y=node_y,
@@ -344,26 +343,25 @@ if text:
         text=node_text,
         textposition="bottom center",
         marker=dict(
-            # Explicitly convert everything to native Python types
-            showscale=False,
-            colorscale='YlGnBu',
+            showscale=True,                # enables colorbar
+            colorscale='YlGnBu',           # valid Plotly colormap
             reversescale=True,
+            # convert to native floats
             color=[float(attention_weight.loc[focus_token, node])
                    if node != focus_token else 1.0
                    for node in G.nodes()],
-            size=[int(30 if node == focus_token else 18)
-                  for node in G.nodes()],
+            size=[30 if node == focus_token else 18 for node in G.nodes()],
+            # ✅ simplified and compliant colorbar (no nested dicts)
             colorbar=dict(
-                title=dict(text="Attention Weight"),
+                title="Attention Weight",  # plain string title works on all versions
                 thickness=15,
                 len=0.5,
-                x=1.05,
-                xanchor='left',
-                titleside='right'
+                x=1.05
             ),
             line=dict(width=2, color='white')
         )
     )
+
 
 
 
@@ -432,6 +430,7 @@ if text:
     sns.heatmap(similarity_df, cmap=cmaps_sim, annot=False, ax=ax_sim)
     ax_sim.set_title("Cosine Similarity (Q vs K)")
     st.pyplot(fig_sim)
+
 
 
 
